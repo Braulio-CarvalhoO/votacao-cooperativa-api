@@ -1,14 +1,19 @@
 package com.cooperativa.votacao.controller;
 
+import com.cooperativa.votacao.client.AssociadoValidadorClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -21,6 +26,15 @@ class VotacaoFluxoIntegrationTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @MockBean
+    private AssociadoValidadorClient associadoValidadorClient;
+
+    @BeforeEach
+    void setup() {
+        // Garante que a validação simulada não bloqueia os CPFs do teste com 403
+        Mockito.doNothing().when(associadoValidadorClient).validarPodeVotar(anyString());
+    }
 
     @Test
     void devePermitirCicloCompletoDeVotacao() throws Exception {
@@ -62,7 +76,7 @@ class VotacaoFluxoIntegrationTest {
                         .content("{\"associadoId\": \"11111111111\", \"voto\": \"NAO\"}"))
                 .andExpect(status().isUnprocessableEntity());
 
-        // 5. aguarda a sessao fechar e apura o resultado
+        // aguarda a sessao fechar e apura o resultado
         Thread.sleep(1200);
 
         mockMvc.perform(get("/api/v1/pautas/" + pautaId + "/resultado"))
