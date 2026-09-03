@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:votacao-test;DB_CLOSE_DELAY=-1
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+votacao:
+  sessao:
+    duracao-padrao-segundos: 60
+  associado-validador:
+    habilitado: false
+    base-url: https://user-info.herokuapp.com

@@ -1,0 +1,18 @@
+2026-09-02 14:08:38.153458-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM PAUTA DATA_CRIACAO [*]TITULO"; SQL statement:
+SELECT * FROM PAUTA DATA_CRIACAO TITULO [42000-224]
+2026-09-02 14:08:40.922149-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM PAUTA DATA_CRIACAO [*]TITULO TITULO"; SQL statement:
+SELECT * FROM PAUTA DATA_CRIACAO TITULO TITULO [42000-224]
+2026-09-02 14:08:47.020279-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]TITULO"; expected "TRUNCATE"; SQL statement:
+TITULO [42001-224]
+2026-09-02 14:08:49.119268-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]TITULO TITULO"; expected "TRUNCATE"; SQL statement:
+TITULO TITULO [42001-224]
+2026-09-02 14:08:58.670058-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]SVOTO ELECT * FROM SESSAO_VOTACAO"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+SVOTO ELECT * FROM SESSAO_VOTACAO [42001-224]
+2026-09-02 14:14:17.587983-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]SESSAO_VOTACAO"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+SESSAO_VOTACAO [42001-224]
